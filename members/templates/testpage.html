@@ -1,0 +1,97 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  Main-Page
+{% endblock %}
+
+{% block carousel %}
+    {% include 'carousel.html' %}
+{% endblock carousel %}
+
+{% block content %}
+  {% load static %}
+  <div class="container">
+
+    <div id="tNews">
+      <h2 class="content-title font-Oswald">NEWS</h2>
+      <ul class="tNewsList">
+        
+        {% for news in newsItems|slice:":4"%}
+        <li class="tNewsList-items">
+          
+          <a href="news/{{ news.id }}" class="tNews-link">
+            <p class="tNewsList-date font-Oswald">{{ news.UpdateAt }}</p>
+            <img src="{{ news.ImgThumb.url }}" class="title-img" />
+            <p class="tNewsList-title">{{ news.Title }}</p>
+          </a>
+        </li>
+
+        {% empty %}
+        <h1>We dont have any news yet!</h1>
+
+        {% endfor %}
+      </ul>
+      <p class="tNews-more font-Oswald">
+        <a href="#" class="LinkToMoreNews">MORE NEWS</a><!-- thêm link more news chỗ này -->
+      </p>
+    </div>
+
+    <div id="tOnAir">
+      <h2 class="content-title font-Oswald">ON AIR</h2>
+      <ul class="tOnAirList">
+          {% for OnaAir in OnAirItems|slice:":5" %}
+            <li class="row tOnAirList-items">
+              <div class="col-md-5">{{OnaAir.Title}}</div>
+              <div class="col-md-3">{{OnaAir.Date}}</div>
+              <div class="col-md-4">{{OnaAir.Detail}}</div>
+            </li>
+          {% endfor %}
+      </ul>
+
+    </div>
+
+    <div id="tStory">
+      <h2 class="content-title font-Oswald">STORY</h2>
+      <ul class="tStoryList">
+
+        <li class="row tStoryList-items">
+          {% for Story in StoryItems|slice:":3" %}
+            <div class="col-md-4">
+              <a href="story_spyxfamily.html" class="tStory-box">
+                  <div>
+                      <img src="{{Story.ImgThumb.url}}" class="Story-thumb">
+                  </div>
+                  <div class="Story-title">
+                      {{Story.Title}}<br>
+                  </div>
+              </a>
+            </div>
+            {% empty %}
+
+          {% endfor %}
+        </li>
+        <li class="row tStoryList-items">
+            {% for Story in StoryItems|slice:"3:6" %}
+              <div class="col-md-4">
+                <a href="story_spyxfamily.html" class="tStory-box">
+                    <div>
+                        <img src="{{Story.ImgThumb.url}}" class="Story-thumb">
+                    </div>
+                    <div class="Story-title">
+                        {{Story.Title}}<br>
+                    </div>
+                </a>
+              </div>
+              {% empty %}
+
+            {% endfor %}
+        </li>
+          
+      </ul>
+      <p class="tNews-more font-Oswald"><!--tái sử dụng class của more news-->
+          <a href="#" class="LinkToMoreNews">MORE STORY</a><!--thêm link more story chỗ này-->
+      </p>
+    </div>
+
+  
+{% endblock %}

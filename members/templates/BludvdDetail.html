@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  News Detail
+{% endblock %}
+
+{% block content %}
+  {% load static %} 
+  <div class="container">
+    <h1 class="content-title font-Oswald">
+        Blu-ray&DVD
+    </h1>
+    <div class="contentDIV">
+        <div class="content">
+            <h2 class="content_item font-Oswald">
+                <span class="content_item_date">Blu-ray&DVD</span>
+                <span class="content_item_text">{{bludvds.Name}}</span>
+            </h2>
+            <div class="content_text">
+        
+                <p class="profile1" style="text-align:center">
+                    <img src="{{bludvds.ImgDetail.url}} " width="100%">
+                </p>
+                <p class="para font-Oswald" style=" letter-spacing: 2px;">
+                    {{bludvds.Content}}
+                </p>
+            </div>
+        </div>
+        <a href="/#tBlu" class="LinkToMoreNews">BACK</a>
+    </div>
+  </div>
+
+{% endblock content %}
